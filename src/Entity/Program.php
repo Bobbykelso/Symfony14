@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\ProgramRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints\Title;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -39,7 +41,11 @@ class Program
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()(message="Ne doit pas être vide")
-     * @Assert\Regex(pattern="/[pP]lus [bB]elle [lL]a [vV]ie/", match=false, message="On parle de vraies séries ici")
+     * @Assert\Regex(
+     * pattern="/[pP]lus [bB]elle [lL]a [vV]ie/", 
+     * match=false, 
+     * message="On parle de vraies séries ici"
+     * )
      */
     private $poster;
 
