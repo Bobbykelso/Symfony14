@@ -44,7 +44,7 @@ class CategoryController extends AbstractController
         //Prendre la data du HTTP request
         $form->handleRequest($request);
         //le form est il soumis ?
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             //s'occuper de la data et le persister et flush l'entitié et ajouter un redirect a une route pour afficher le resultat
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
